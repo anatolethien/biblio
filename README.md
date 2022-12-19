@@ -1,26 +1,39 @@
-# projet-biblio
+# biblio
 
 ## Fonctionnalités
 
-- Barre de recherche pour explorer les données
-- Recommandations pour l'utilisateur
-- Compte utilisateur
-- Like et dislike sur les livres
+- Application web pour visualiser les données
 
-## Technologies utilisées
+- Barre de recherche avancée pour rechercher des données
+
+- Compte utilisateur avec liste de favoris
+
+- Recommandations à l'utilisateur en fonction de ses favoris
+
+## Technologies
+
+- Git
 
 - Python
-- Pandas
-- Dash
-- Jupyter
-- Kaggle
+  
+  - pandas
+  
+  - flask
+  
+  - dash
 
-## Brouillon
+- Docker
 
-```
-utiliser DASH -> visu des données [lien](https://dash.plotly.com)
+- MySQL
 
-Transformer la description du livre en vecteur
--> filtrer tous les mots utilisés dans chaque description, retenir seulement les mots singuliers sans accents, qui véhiculent un sens
--> Chaque desc de livre = un tableau avec chaque terme et une valeur bool pour checker si le terme est contenu dans la desc.
-```
+## Planning
+
+- Séance 1 - choix du projet et de son jeu de données, initialisation du dépôt Git, mise en place de l'environnement de développement, découvertes des bibliothèques Python
+
+- Séance 2 - exploration du jeu de données, mise en place du notebook Jupyter
+
+- Séance 3 - visualisation du jeu de données avec pandas et mathplotlib, choix des données à traiter en fonction de leur pertinence
+
+- Séance 4 - traitement de données avec pandas
+
+
