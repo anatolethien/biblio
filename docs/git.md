@@ -4,6 +4,12 @@ Utilisation du workflow [Gitflow](https://www.atlassian.com/fr/git/tutorials/com
 
 ![Gitflow](https://cdn-images-1.medium.com/max/1600/1*L0jHGLTJwZO5CTtpsn-dKA.png)
 
+Avant de commencer à travailler, récupérer la dernière version du repository.
+
+```git
+git pull
+```
+
 Passer sur la branche `dev`.
 
 ```git
