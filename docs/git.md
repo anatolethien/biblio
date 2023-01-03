@@ -16,13 +16,13 @@ Passer sur la branche `dev`.
 git checkout dev
 ```
 
-Créer une nouvelle branche 
+Créer une nouvelle branche.
 
 ```git
 git checkout -b feature
 ```
 
-Merge sur develop
+Merge sur la branche `dev`.
 
 ```git
 git checkout dev
