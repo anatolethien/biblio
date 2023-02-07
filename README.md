@@ -36,4 +36,8 @@
 
 - Séance 4 - traitement de données avec pandas
 
+## Format à garder
+
+1,2,9,16,22
+
 
