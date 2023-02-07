@@ -39,6 +39,9 @@ def book_length(book_id):
     length = df_dataset.iloc[book_id]["dimension-y"]
     return f"{length}mm" 
 
+@app.route("/book/<int:book_id>/author")
+def book_author():
+    
 
-if __name__ == "__main__" :
-    app.run(debug=True, host='0.0.0.0')
+    if __name__ == "__main__" :
+        app.run(debug=True, host='0.0.0.0')
