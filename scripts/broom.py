@@ -1,22 +1,42 @@
 #!/usr/bin/env env/Scripts/python
 
 import pandas as pd
+import numpy as np
 
 print('Broom!')
 
-df_authors = pd.read_csv('assets/authors.csv')
-df_categories = pd.read_csv('assets/categories.csv')
-df_dataset = pd.read_csv('assets/dataset.csv')
+df_books = pd.read_csv(
+    filepath_or_buffer='assets/dataset.csv',
+    usecols=[
+        'authors',
+        'bestsellers-rank',
+        'categories',
+        'description',
+        'dimension-x',
+        'dimension-y',
+        'dimension-z',
+        'format',
+        'id',
+        'image-url',
+        'isbn10',
+        'isbn13',
+        'lang',
+        'publication-date',
+        'rating-avg',
+        'rating-count',
+        'title',
+        'weight'
+    ]
+)
 
-def author_magic_parser(row):
-    author_info = []
-    list = eval(row)
-    for author_id in list:
-        if author_id in df_authors.index:
-            author_info.append((author_id, ))
+df_books = df_books.dropna()
+df_books = df_books.loc[df_books['lang'] == 'en']
+df_books['bestsellers-rank'] = df_books['bestsellers-rank'].astype(np.int32)
+df_books['format'] = df_books['format'].astype(np.int32)
+df_books['publication-date'] = pd.to_datetime(df_books['publication-date']).dt.date
+df_books['rating-count'] = df_books['rating-count'].astype(np.int32)
 
-    return author_info
+print(df_books.info(memory_usage='deep'))
 
-df_dataset = df_dataset[df_dataset["bestsellers-rank"].notna()]
-
-
+# df_books.sample(5000).to_csv('assets/books.csv', index=False)
+df_books.to_csv('assets/books.csv', index=False),
