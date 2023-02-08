@@ -1,6 +1,7 @@
 # todo
 
-- [ ] Écrire la documentation git
-- [ ] Traiter les données dans le script `broom.py`
-- [ ] Réunifier le dataset dans un seul fichier `csv`
+- [x] Écrire la documentation git
+- [x] Traiter les données dans le script `broom.py`
 - [ ] Réorganiser le notebook
+- [ ] Lemmatiser le corpus des livres
+- [ ] Vectoriser les termes du corpus
