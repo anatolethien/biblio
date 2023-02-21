@@ -41,7 +41,7 @@ def books_broom():
     df_books['publication-date'] = pd.to_datetime(df_books['publication-date']).dt.date
     df_books['rating-count'] = df_books['rating-count'].astype(np.int32)
     print(f'Writing the books dataset to {destination_path}...')
-    df_books.sample(5000).to_csv(
+    df_books.to_csv(
         path_or_buf=destination_path,
         index=False
     )
