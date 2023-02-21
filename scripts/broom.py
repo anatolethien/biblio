@@ -1,4 +1,4 @@
-#!/usr/bin/env env/Scripts/python
+#!/usr/bin/env python3
 
 import pandas as pd
 import numpy as np

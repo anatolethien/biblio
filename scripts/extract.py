@@ -1,4 +1,4 @@
-#!/usr/bin/env env/Scripts/python
+#!/usr/bin/env python3
 
 import os
 import glob
@@ -17,7 +17,6 @@ def extract_archive():
     print(f"Extracting to {destination_path}...")
     with zip.ZipFile(origin_path, 'r') as archive:
         archive.extractall(destination_path)
-
 
 if __name__ == '__main__':
     print("Extract!")
