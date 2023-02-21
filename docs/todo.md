@@ -5,3 +5,4 @@
 - [ ] Réorganiser le notebook
 - [ ] Lemmatiser le corpus des livres
 - [ ] Vectoriser les termes du corpus
+- [ ] Vérifier que les données dans `assets/` ne contiennent aucun NaN
