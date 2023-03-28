@@ -40,6 +40,7 @@ def books_broom():
     df_books = df_books.loc[df_books['format'].isin(correct_formats)]
     df_books['publication-date'] = pd.to_datetime(df_books['publication-date']).dt.date
     df_books['rating-count'] = df_books['rating-count'].astype(np.int32)
+    df_books = df_books.dropna()
     print(f'Writing the books dataset to {destination_path}...')
     df_books.to_csv(
         path_or_buf=destination_path,
