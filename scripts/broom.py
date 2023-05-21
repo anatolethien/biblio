@@ -29,7 +29,7 @@ def books_broom():
             'title',
             'weight'
         ]
-    )
+    ).sample(10000)
     print('Treating data...')
     df_books = df_books.dropna()
     correct_langs = ['en']
