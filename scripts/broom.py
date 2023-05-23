@@ -47,6 +47,19 @@ def books_broom():
     df_books['publication-date'] = pd.to_datetime(df_books['publication-date']).dt.date
     df_books['rating-count'] = df_books['rating-count'].astype(np.int32)
     df_books = df_books.dropna()
+    df_books.rename(
+        columns={
+            'bestsellers-rank': 'bestsellers_rank',
+            'dimension-x': 'length',
+            'dimension-y': 'height',
+            'dimension-z': 'width',
+            'image-url': 'image_url',
+            'publication-date': 'publication_date',
+            'rating-avg': 'rating_avg',
+            'rating-count': 'rating_count'
+        },
+        inplace=True
+    )
     print(f'Writing the books dataset to {destination_path}...')
     match sys.argv[1] if len(sys.argv) > 1 else 'csv':
         case 'csv':
