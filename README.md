@@ -1,5 +1,19 @@
 # biblio
 
+## Install
+
+```
+python3.10 -m pip install -r requirements.txt
+```
+
+```
+export FLASK_APP=biblio
+```
+
+```
+python3.10 -m flask run
+```
+
 ## Fonctionnalités
 
 - Application web pour visualiser les données

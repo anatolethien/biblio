@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <h3>Login</h3>
+    <form method="POST" action="/login">
+        <fieldset>
+            <label for="username">
+                Username
+                <input type="name" name="name">
+            </label>
+            <label for="password">
+                Password
+                <input type="password" name="password">
+            </label>
+            <label for="checkbox">
+                Remember me
+                <input type="checkbox" name="checkbox">
+            </label>
+        </fieldset>
+        <input type="submit" value="Login">
+    </form>
+</article>
+{% endblock %}

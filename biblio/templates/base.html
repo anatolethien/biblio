@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li>
+                <strong><a href="{{ url_for('main.index') }}">Biblio</a></strong>
+            </li>
+        </ul>
+        <ul>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('main.profile') }}">{{ current_user.username }}</a></li>
+                <li><a href="{{ url_for('auth.logout') }}" role="button">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                <li><a href="{{ url_for('auth.login') }}" role="button">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="container">
+        <small>Powered by Python and SQLite 🚀</small>
+    </footer>
+</body>
+</html>

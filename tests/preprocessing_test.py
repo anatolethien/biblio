@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 
-from preprocessing import Preprocessing
+from biblio.preprocessing import Preprocessing
 
 class TestPreprocessing(unittest.TestCase):
 
