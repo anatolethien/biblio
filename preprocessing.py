@@ -2,6 +2,8 @@ import unittest
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 class Preprocessing:
@@ -17,7 +19,7 @@ class Preprocessing:
     def __init__(self, path: str = 'assets/books.csv'):
         self.books = pd.read_csv(
             filepath_or_buffer=path,
-            usecols=['title', 'description']
+            usecols=['id', 'title', 'description']
         )
         self.corpus = self.books['title'] + ' ' + self.books['description']
 
@@ -50,3 +52,10 @@ class Preprocessing:
             lambda ser:
                 [word for word in word_tokenize(ser) if word not in stop_words]
         )
+
+if __name__ == '__main__':
+    p = Preprocessing()
+    cv = CountVectorizer()
+    matrix = cv.fit_transform(p.corpus)
+    similarity_matrix = cosine_similarity(matrix)
+    print(similarity_matrix)

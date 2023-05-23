@@ -4,7 +4,7 @@ from .models import Book
 
 api = Blueprint('api', __name__)
 
-@api.route('/book/<int:id>')
+@api.route('/api/book/<int:id>')
 def book(id: int):
     book = Book.query.get(id)
     if book:

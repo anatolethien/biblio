@@ -1,3 +1,4 @@
+import json
 from flask_login import UserMixin
 from . import db
 
@@ -28,6 +29,8 @@ class Book(db.Model):
     weight = db.Column(db.Float())
 
     def to_dict(self):
+        with open('recommandations.json', 'r') as file:
+            recommandations = json.load(file)
         return {
             'id': self.id,
             'description': self.description,
@@ -39,7 +42,8 @@ class Book(db.Model):
             'rating_avg': self.rating_avg,
             'rating_count': self.rating_count,
             'title': self.title,
-            'weight': self.weight
+            'weight': self.weight,
+            'recommandations': recommandations[str(self.id)]
         }
 
 class Like(db.Model):
