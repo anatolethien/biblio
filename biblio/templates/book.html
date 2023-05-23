@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article>
-    <header>
-        <h2>{{ book.title }}</h2>
-        <p>{{ book.description }}</p>
-    </header>
-    <img src="{{ book.image_url }}">
-    <footer>
-        <ul>
-            <li>Length: {{ book.length }}mm</li>
-            <li>Height: {{ book.height }}mm</li>
-            <li>Width: {{ book.width }}mm</li>
-            <li>Weight: {{ book.weight }}g</li>
-        </ul>
-    </footer>
-</article>
-<h2>You might also enjoy</h2>
-<div class="grid">
-    {% for recommendation in book.recommandations %}
+<section>
     <article>
         <header>
-            <a href="/book/{{ recommendation.id }}" class="contrast">
-                <h6>{{ recommendation.title }}</h3>
-            </a>
+            <h2>{{ book.title }}</h2>
+            <p>{{ book.description }}</p>
         </header>
+        <img src="{{ book.image_url }}">
         <footer>
-            <img src="{{ recommendation.image_url }}">
-            </footer>
+            <ul>
+                <li>Length: {{ book.length }}mm</li>
+                <li>Height: {{ book.height }}mm</li>
+                <li>Width: {{ book.width }}mm</li>
+                <li>Weight: {{ book.weight }}g</li>
+            </ul>
+        </footer>
     </article>
-    {% endfor %}
-</div>
+    <a href="#" role="button">Like</a>
+</section>
+<section>
+    <h2>You might also enjoy</h2>
+    <div class="grid">
+        {% for recommendation in book.recommandations %}
+        <article>
+            <header>
+                <a href="/book/{{ recommendation.id }}" class="contrast">
+                    <h6>{{ recommendation.title }}</h3>
+                </a>
+            </header>
+            <footer>
+                <img src="{{ recommendation.image_url }}">
+                </footer>
+        </article>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

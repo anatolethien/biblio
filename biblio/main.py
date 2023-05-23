@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template, redirect
 from flask_login import login_required, current_user
+from sqlalchemy import func
 from .models import Book
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    random_books = Book.query.order_by(func.random()).limit(3).all()
+    return render_template('index.html', books=random_books)
 
 @main.route('/profile')
 @login_required

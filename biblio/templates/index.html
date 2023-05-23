@@ -5,4 +5,20 @@
     <h1>Biblio</h1>
     <h2>Find books that you might enjoy thanks to our recommendation algorithm.</h2>
 </hgroup>
+<section>
+    <div class="grid">
+        {% for book in books %}
+        <article>
+            <header>
+                <a href="/book/{{ book.id }}" class="contrast">
+                    <h6>{{ book.title }}</h3>
+                </a>
+            </header>
+            <footer>
+                <img src="{{ book.image_url }}">
+            </footer>
+        </article>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
