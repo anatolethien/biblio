@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 
+import sys
 import pandas as pd
 import numpy as np
+import sqlite3
 
 def books_broom():
     origin_path = 'downloads/dataset.csv'
-    destination_path = 'assets/books.csv'
+    match sys.argv[1] if len(sys.argv) > 1 else 'csv':
+        case 'csv':
+            destination_path = 'assets/books.csv'
+        case 'sql':
+            destination_path = 'instance/database.sqlite'
     print(f'Reading the books dataset from {origin_path}...')
     df_books = pd.read_csv(
         filepath_or_buffer=origin_path,
@@ -42,10 +48,21 @@ def books_broom():
     df_books['rating-count'] = df_books['rating-count'].astype(np.int32)
     df_books = df_books.dropna()
     print(f'Writing the books dataset to {destination_path}...')
-    df_books.to_csv(
-        path_or_buf=destination_path,
-        index=False
-    )
+    match sys.argv[1] if len(sys.argv) > 1 else 'csv':
+        case 'csv':
+            df_books.to_csv(
+                path_or_buf=destination_path,
+                index=False
+            )
+        case 'sql':
+            df_books.set_index('id', inplace=True)
+            con = sqlite3.connect(destination_path)
+            df_books.to_sql(
+                name='book',
+                con=con,
+                index=True
+            )
+            con.close()
 
 def authors_broom():
     origin_path = 'downloads/authors.csv'
