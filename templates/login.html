@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Connexion</title>
-</head>
-
-<body>
-    <h1>Connexion</h1>
+{% extends 'base.html' %}
+{% block content %}
+<article>
+    <h2>Login</h2>
     <form method="POST" action="/login">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="username" required><br>
-
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <input type="submit" value="Se connecter">
+        <fieldset>
+            <label for="username">
+                Username
+                <input type="text" id="username" name="username" required>
+            </label>
+            <label for="password">
+                Password
+                <input type="password" id="password" name="password" required>
+            </label>
+        </fieldset>
+        <input type="submit" value="Login">
     </form>
-    <br>
-    <a href="/signup">S'inscrire</a>
-</body>
-
-</html>
+</article>
+{% endblock %}

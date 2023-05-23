@@ -1,4 +1,8 @@
+numpy
 pandas
-flask
-flask_sqlalchemy
+Flask==2.2.5
+Flask-SQLAlchemy
+Flask-Security
+email_validator
+scikit-learn
 nltk
