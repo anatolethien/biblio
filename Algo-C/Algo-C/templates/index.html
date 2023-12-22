@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil Utilisateur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 500px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #0056b3;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Profil Utilisateur</h2>
+        <form id="profilForm">
+            <input type="text" id="nom" placeholder="Nom" required>
+            <input type="number" id="age" placeholder="Âge" required>
+            <select id="genre">
+                <option value="" disabled selected>Genre</option>
+                <option value="Femme">Femme</option>
+                <option value="Homme">Homme</option>
+                <option value="Non-binaire">Non-binaire</option>
+            </select>
+            <input type="text" id="profession" placeholder="Profession" required>
+            <input type="text" id="lieuNaissance" placeholder="Lieu de naissance" required>
+            <input type="text" id="lieuResidence" placeholder="Lieu de résidence" required>
+            <input type="text" id="langues" placeholder="Langues parlées" required>
+            <input type="text" id="religion" placeholder="Religion" required>
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('profilForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const profilData = {
+                nom: document.getElementById('nom').value,
+                age: document.getElementById('age').value,
+                genre: document.getElementById('genre').value,
+                profession: document.getElementById('profession').value,
+                lieuNaissance: document.getElementById('lieuNaissance').value,
+                lieuResidence: document.getElementById('lieuResidence').value,
+                langues: document.getElementById('langues').value,
+                religion: document.getElementById('religion').value
+            };
+            fetch('/profil', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(profilData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Vous pouvez ajouter ici une logique pour afficher un message de succès ou gérer la réponse
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
